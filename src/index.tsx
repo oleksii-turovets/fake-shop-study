@@ -1,33 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// const title = React.createElement("h1", { id: "title" }, "Hello React.js");
-// console.log(title);
+function List() {
+    return (
+        <React.Fragment>
+            <ul>
+                <li>List item 1</li>
+                <li>List item 2</li>
+                <li>List item 3</li>
+            </ul>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                ipsum voluptas quasi hic minima iusto ex, vero dignissimos
+                beatae suscipit tempora dicta, id facere officia ipsam eligendi.
+                Culpa, sapiente excepturi.
+            </p>
+        </React.Fragment>
+    );
+}
 
-// jsx => extended
-// tsx => ts ectended
-const title = <h1 id="title">Hello React.js</h1>;
-console.log(title);
+function Title() {
+    return <h1>Hello TS</h1>;
+}
 
-const content = (
-    <div>
-        {title}
-        {10 + 10}
-        <ul className="list">
-            <li>List item 1</li>
-            <li>List item 2</li>
-            <li>List item 3</li>
-        </ul>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui
-            sed adipisci facilis voluptatem deleniti illum incidunt numquam, ea,
-            beatae amet quaerat aspernatur et praesentium temporibus sunt eos
-            voluptate ullam.
-        </p>
-    </div>
-);
+const App = () => {
+    return (
+        <div className="app">
+            <Title />
+            <List />
+        </div>
+    );
+};
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
-root.render(<React.StrictMode>{content}</React.StrictMode>);
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);
