@@ -19,14 +19,36 @@ function List() {
     );
 }
 
-function Title() {
-    return <h1>Hello TS</h1>;
+type TitleProps = {
+    name: string;
+    text?: string;
+    year?: number;
+};
+
+function Title({ name, text, year }: TitleProps) {
+    return (
+        <>
+            <h1>Hello {name}</h1>
+            <p>{text}</p>
+            <div>Year: {year}</div>
+        </>
+    );
 }
 
 const App = () => {
     return (
         <div className="app">
-            <Title />
+            <Title name="App" text="Lorem ipsum dolor" year={1970} />
+            <Title
+                name="React"
+                text="sit amet consectetur adipisicing"
+                year={1990}
+            />
+            <Title
+                name="TS"
+                text="id facere officia ipsam eligendi"
+                year={2015}
+            />
             <List />
         </div>
     );
