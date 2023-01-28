@@ -1,6 +1,7 @@
 type Props = {};
 
 export const List = (props: Props) => {
+    let data = false
     return (
         <>
             <ul>
@@ -8,11 +9,18 @@ export const List = (props: Props) => {
                 <li>List item 2</li>
                 <li>List item 3</li>
             </ul>
-            <p>
+            <p style={{
+                color: 'white',
+                backgroundColor: data ? 'purple' : 'tomato',
+                padding: '15px',
+            }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
                 ipsum voluptas quasi hic minima iusto ex, vero dignissimos
                 beatae suscipit tempora dicta, id facere officia ipsam eligendi.
                 Culpa, sapiente excepturi.
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse tenetur facere provident adipisci placeat. Quisquam, maiores aliquam pariatur laudantium dolore laboriosam? Provident ratione dolorem ipsum animi deleniti, pariatur sit expedita.
             </p>
         </>
     );

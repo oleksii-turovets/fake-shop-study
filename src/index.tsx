@@ -22,7 +22,6 @@ const App = () => {
     return (
         <div className="app">
             <Title
-                // name="App"
                 text="Lorem ipsum dolor"
                 year={1970} />
             <Title
