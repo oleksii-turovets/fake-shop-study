@@ -1,5 +1,10 @@
 .content {
-    color: white;
     background-color: darkblue;
+}
+.test {
+    background-color: peru;
+}
+.article-desc {
+    color: white;
     padding: 15px;
 }
