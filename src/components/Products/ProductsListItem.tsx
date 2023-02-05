@@ -22,24 +22,19 @@ type State = {
 };
 
 class ProductsListItem extends Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            count: 1,
-        };
-        this.onIncrementClick = this.onIncrementClick.bind(this)
-        this.onDecrementClick = this.onDecrementClick.bind(this);
-    }
+    state = {
+        count: 1,
+    };
 
     onIncrementClick() {
         this.setState((prevState) => ({
             count: prevState.count + 1,
-        }))
+        }));
     }
     onDecrementClick() {
         this.setState((prevState) => ({
             count: prevState.count - 1,
-        }))
+        }));
     }
 
     render() {
@@ -60,14 +55,14 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-quantity">
                         <Button
                             variant="outlined"
-                            onClick={this.onDecrementClick}
+                            onClick={() => this.onDecrementClick()}
                         >
                             -
                         </Button>
                         <TextField size="small" value={this.state.count} />
                         <Button
                             variant="outlined"
-                            onClick={this.onIncrementClick}
+                            onClick={() => this.onIncrementClick()}
                         >
                             +
                         </Button>
