@@ -19,22 +19,38 @@ type Props = {
 
 type State = {
     count: number;
+    disableBtn: boolean;
 };
 
 class ProductsListItem extends Component<Props, State> {
     state = {
         count: 1,
+        disableBtn: true,
     };
 
     onIncrementClick = () => {
         this.setState((prevState) => ({
             count: prevState.count + 1,
         }));
+        this.disablingDecrementClick(0);
     };
     onDecrementClick = (num: number) => {
         this.setState((prevState) => ({
             count: prevState.count - num,
         }));
+        this.disablingDecrementClick(2);
+    };
+    disablingDecrementClick = (num:number) => {
+        if (this.state.count <= num) {
+            this.setState(() => ({
+                disableBtn: true,
+            }));
+        } else {
+            this.setState(() => ({
+                disableBtn: false,
+            }));
+        }
+        
     };
 
     render() {
@@ -55,7 +71,8 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-quantity">
                         <Button
                             variant="outlined"
-                            onClick={() => this.onDecrementClick(2)}
+                            onClick={() => this.onDecrementClick(1)}
+                            disabled={this.state.disableBtn}
                         >
                             -
                         </Button>
