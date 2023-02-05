@@ -18,17 +18,24 @@ type Props = {
 };
 
 type State = {
-    count:number
-}
+    count: number;
+};
 
 class ProductsListItem extends Component<Props, State> {
-    
-    constructor(props:Props) {
+    constructor(props: Props) {
         super(props);
         this.state = {
             count: 1,
-        }
+        };
+        this.onIncrementClick = this.onIncrementClick.bind(this)
     }
+
+    onIncrementClick() {
+        this.setState({
+            count: 2,
+        })
+    }
+
     render() {
         const { title, description, type, capacity, price, image } = this.props;
         return (
@@ -38,12 +45,8 @@ class ProductsListItem extends Component<Props, State> {
                         <img src={image} alt="" />
                     </div>
                     <div className="product-title">{title}</div>
-                    <div className="product-description">
-                        {description}
-                    </div>
-                    <div className="product-features">
-                        Type: {type}
-                    </div>
+                    <div className="product-description">{description}</div>
+                    <div className="product-features">Type: {type}</div>
                     <div className="product-features">
                         Capacity: {capacity} Gb
                     </div>
@@ -51,7 +54,7 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-quantity">
                         <Button variant="outlined">-</Button>
                         <TextField size="small" value={this.state.count} />
-                        <Button variant="outlined">+</Button>
+                        <Button variant="outlined" onClick={this.onIncrementClick}>+</Button>
                     </div>
                 </CardContent>
                 <CardActions className="btns-wrap">
