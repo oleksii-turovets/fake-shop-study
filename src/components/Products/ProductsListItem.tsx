@@ -8,20 +8,26 @@ type Props = {
     capacity: string;
     price: number;
 };
-const ProductsListItem = (props: Props) => {
-  return (
-      <Card className="product" variant="outlined">
-          <CardContent>
-              <div className="product-title">{props.title}</div>
-              <div className="product-description">{props.description}</div>
-              <div className="product-features">Type: {props.type}</div>
-              <div className="product-features">Capacity: {props.capacity} Gb</div>
-              <div className="product-price">{props.price}$</div>
-          </CardContent>
-          <CardActions className="btns-wrap">
-              <Button variant="outlined">Add to cart</Button>
-          </CardActions>
-      </Card>
-  );
-}
+const ProductsListItem = ({
+    title,
+    description,
+    type,
+    capacity,
+    price,
+}: Props) => {
+    return (
+        <Card className="product" variant="outlined">
+            <CardContent>
+                <div className="product-title">{title}</div>
+                <div className="product-description">{description}</div>
+                <div className="product-features">Type: {type}</div>
+                <div className="product-features">Capacity: {capacity} Gb</div>
+                <div className="product-price">{price}$</div>
+            </CardContent>
+            <CardActions className="btns-wrap">
+                <Button variant="outlined">Add to cart</Button>
+            </CardActions>
+        </Card>
+    );
+};
 export default ProductsListItem

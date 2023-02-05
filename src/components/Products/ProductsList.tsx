@@ -14,18 +14,18 @@ type Product = {
 const ProductsList = (props: Props) => {
     return (
         <>
-            <Typography variant="h3" component="h2" align="center">
+            <Typography variant="h3" component="h2" align="center" sx={{marginBottom:'30px',}}>
                 List of Products
             </Typography>
             <Grid container spacing={4} alignItems="stretch">
-                {productsArray.map((productsitem: Product) => (
-                    <Grid item xs={12} sm={6} md={4} >
+                {productsArray.map(({title, description, type, capacity, price}: Product, i) => (
+                    <Grid item xs={12} sm={6} md={4} key={i}>
                         <ProductsListItem
-                            title={productsitem.title}
-                            description={productsitem.description}
-                            type={productsitem.type}
-                            capacity={productsitem.capacity}
-                            price={productsitem.price}
+                            title={title}
+                            description={description}
+                            type={type}
+                            capacity={capacity}
+                            price={price}
                         />
                     </Grid>
                 ))}
