@@ -9,15 +9,17 @@ import { useState } from "react";
 import "./ProductsListItem.scss";
 
 type Props = {
-    title: string;
-    description: string;
-    type: string;
-    capacity: string;
-    price: number;
-    image: string;
-    addProductToCart: (count: number, price: number) => void;
-};
+    id: number
+    title: string
+    description: string
+    type: string
+    capacity: string
+    price: number
+    image: string
+    addProductToCart: (id: number, count: number) => void
+}
 const ProductsListItem = ({
+    id,
     title,
     description,
     type,
@@ -67,12 +69,12 @@ const ProductsListItem = ({
             <CardActions className="btns-wrap">
                 <Button
                     variant="outlined"
-                    onClick={() => addProductToCart(count, price)}
+                    onClick={() => addProductToCart(id, count)}
                 >
                     Add to cart
                 </Button>
             </CardActions>
         </Card>
-    );
+    )
 };
 export default ProductsListItem;
