@@ -16,10 +16,10 @@ const App = (props: Props) => {
         1: 5,
         2: 5,
     })
-
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
-            [id]: prevState[id] + count,
+            ...prevState,
+            [id]: prevState[id] === undefined ? count : prevState[id] + count,
         }))
     }
 
