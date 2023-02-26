@@ -16,20 +16,27 @@ const App = (props: Props) => {
         1: 5,
         2: 5,
     })
+    const addProductToCart = (id: number, count: number) => {
+        setProductsInCart((prevState) => {
+            if (prevState[id] === undefined) {
+                return {
+                    ...prevState,
+                    [id]: 0 + count,
+                }
+            } else {
+                return {
+                    ...prevState,
+                    [id]: prevState[id] + count,
+                }
+            }
+        })
+    }
     // const addProductToCart = (id: number, count: number) => {
     //     setProductsInCart((prevState) => ({
     //         ...prevState,
     //         [id]: prevState[id] === undefined ? count : prevState[id] + count,
     //     }))
     // }
-    const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) =>
-            Object.assign({}, prevState, {
-                [id]:
-                    prevState[id] === undefined ? count : prevState[id] + count,
-            })
-        )
-    }
 
     return (
         <StyledEngineProvider injectFirst>
