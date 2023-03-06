@@ -9,9 +9,16 @@ type Props = {
         [id: number]: number
     }
     removeProductFromCart: (id: number) => void
+    increaseCountOfProductInCart: (id: number) => void
+    decreaseCountOfProductInCart: (id: number) => void
 }
 
-const CartPage = ({ productsInCart, removeProductFromCart }: Props) => {
+const CartPage = ({
+    productsInCart,
+    removeProductFromCart,
+    increaseCountOfProductInCart,
+    decreaseCountOfProductInCart,
+}: Props) => {
     return (
         <div>
             <Typography variant="h4" component="h1" align="center">
@@ -22,6 +29,8 @@ const CartPage = ({ productsInCart, removeProductFromCart }: Props) => {
                     productsInCart={productsInCart}
                     CartItem={CartProductListItemExtended}
                     removeProductFromCart={removeProductFromCart}
+                    increaseCountOfProductInCart={increaseCountOfProductInCart}
+                    decreaseCountOfProductInCart={decreaseCountOfProductInCart}
                 />
             </Grid>
 
