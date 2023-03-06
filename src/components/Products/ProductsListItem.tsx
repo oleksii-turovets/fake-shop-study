@@ -1,12 +1,7 @@
-import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    TextField,
-} from "@mui/material";
-import { useState } from "react";
-import "./ProductsListItem.scss";
+import { Button, Card, CardActions, CardContent } from '@mui/material'
+import Quantity from 'components/Quantity/Quantity'
+import { useState } from 'react'
+import './ProductsListItem.scss'
 
 type Props = {
     id: number
@@ -28,14 +23,14 @@ const ProductsListItem = ({
     image,
     addProductToCart,
 }: Props) => {
-    const [count, setCount] = useState<number>(1);
+    const [count, setCount] = useState<number>(1)
 
     const onIncrement = () => {
-        setCount((prevState) => prevState + 1);
-    };
+        setCount((prevState) => prevState + 1)
+    }
     const onDecrement = () => {
-        setCount((prevState) => prevState - 1);
-    };
+        setCount((prevState) => prevState - 1)
+    }
 
     return (
         <Card className="product" variant="outlined">
@@ -48,23 +43,11 @@ const ProductsListItem = ({
                 <div className="product-features">Type: {type}</div>
                 <div className="product-features">Capacity: {capacity} Gb</div>
                 <div className="product-price">{price}$</div>
-                <div className="product-quantity">
-                    <Button
-                        variant="outlined"
-                        onClick={() => onDecrement()}
-                        disabled={count <= 1}
-                    >
-                        -
-                    </Button>
-                    <TextField size="small" value={count} />
-                    <Button
-                        variant="outlined"
-                        onClick={() => onIncrement()}
-                        disabled={count >= 10}
-                    >
-                        +
-                    </Button>
-                </div>
+                <Quantity
+                    count={count}
+                    onDecrement={onDecrement}
+                    onIncrement={onIncrement}
+                />
             </CardContent>
             <CardActions className="btns-wrap">
                 <Button
@@ -76,5 +59,5 @@ const ProductsListItem = ({
             </CardActions>
         </Card>
     )
-};
-export default ProductsListItem;
+}
+export default ProductsListItem
