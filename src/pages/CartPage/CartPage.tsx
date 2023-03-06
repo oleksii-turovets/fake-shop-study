@@ -16,7 +16,7 @@ const CartPage = ({ productsInCart }: Props) => {
             <Typography variant="h4" component="h1" align="center">
                 Cart
             </Typography>
-            <Grid container spacing={4}>
+            <Grid container spacing={4} sx={{ marginTop: 0 }}>
                 <CartProductList
                     productsInCart={productsInCart}
                     CartItem={CartProductListItemExtended}
