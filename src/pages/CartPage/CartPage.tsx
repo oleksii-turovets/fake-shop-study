@@ -1,6 +1,7 @@
 import productsArray, { getProductsObject, Product } from 'utils/productsArray'
 import { Divider, Grid, Stack, Typography } from '@mui/material'
 import './CartPage.scss'
+import CartTotal from 'components/CartTotal/CartTotal'
 
 type Props = {
     productsInCart: {
@@ -64,14 +65,7 @@ const CartPage = ({
                     ))}
                 </Stack>
                 <div className="totals">
-                    Total: $
-                    {Object.keys(productsInCart).reduce(
-                        (total, productId) =>
-                            total +
-                            productsObject[parseInt(productId)].price *
-                                productsInCart[parseInt(productId)],
-                        0
-                    )}
+                    <CartTotal productsInCart={productsInCart} />
                 </div>
             </div>
         </div>
