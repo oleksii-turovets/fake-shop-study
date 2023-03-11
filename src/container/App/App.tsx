@@ -3,7 +3,7 @@ import Header from 'container/Header/Header'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { Container } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home/Home'
 import CartPage from 'pages/CartPage/CartPage'
@@ -18,10 +18,19 @@ type ProductsInCartType = {
     [id: number]: number
 }
 
+type ProductsLikeType = {
+    [id: number]: boolean
+}
+
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
+    })
+
+    const [productsLike, setProductsLike] = useState<ProductsLikeType>({
+        1: true,
+        2: true,
     })
 
     const addProductToCart = (id: number, count: number) => {
@@ -42,6 +51,13 @@ const App = (props: Props) => {
         }))
     }
 
+    const toggleLikeState = (id: number) => {
+        setProductsLike((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id],
+        }))
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -54,7 +70,13 @@ const App = (props: Props) => {
                 <Routes>
                     <Route
                         path="/"
-                        element={<Home addProductToCart={addProductToCart} />}
+                        element={
+                            <Home
+                                addProductToCart={addProductToCart}
+                                productsLike={productsLike}
+                                toggleLikeState={toggleLikeState}
+                            />
+                        }
                     />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/shipping" element={<ShippingPage />} />
