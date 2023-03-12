@@ -4,7 +4,7 @@ type ProductsLike = {
     [id: number]: boolean
 }
 
-export const initialState = {
+export const initialState: ProductsLike = {
     1: true,
     2: true,
 }
