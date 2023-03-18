@@ -20,6 +20,8 @@ const CartProductList = ({
     removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
+
+    
     return (
         <>
             {Object.keys(productsInCart).map((productId) => (
