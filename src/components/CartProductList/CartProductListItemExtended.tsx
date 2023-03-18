@@ -44,7 +44,10 @@ const CartProductListItemExtended = ({
                         count={productCount}
                         onDecrement={() =>
                             productCount === 1
-                                ? removeProductFromCart(product.id)
+                                ? dispatch({
+                                      type: 'REMOVE_PRODUCT_FROM_CART',
+                                      id: product.id,
+                                  })
                                 : changeProductQuantity(
                                       product.id,
                                       productCount - 1
@@ -58,7 +61,12 @@ const CartProductListItemExtended = ({
                     <br />
                     <Button
                         variant="outlined"
-                        onClick={() => removeProductFromCart(product.id)}
+                        onClick={() =>
+                            dispatch({
+                                type: 'REMOVE_PRODUCT_FROM_CART',
+                                id: product.id,
+                            })
+                        }
                     >
                         <DeleteIcon />
                     </Button>
