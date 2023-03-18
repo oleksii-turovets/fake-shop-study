@@ -20,10 +20,9 @@ const CartProductListItemExtended = ({
     removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
+    const isLiked = useAppSelector((state) => state.productsLike[product.id])
+    const dispatch = useAppDispatch()
 
-        const isLiked = useAppSelector((state) => state.productsLike[product.id])
-        const dispatch = useAppDispatch()
-    
     return (
         <Grid item xs={12} sm={4}>
             <Card variant="outlined">
@@ -48,13 +47,18 @@ const CartProductListItemExtended = ({
                                       type: 'REMOVE_PRODUCT_FROM_CART',
                                       id: product.id,
                                   })
-                                : changeProductQuantity(
-                                      product.id,
-                                      productCount - 1
-                                  )
+                                : dispatch({
+                                      type: 'CHANGE_PRODUCT_QUANTITY',
+                                      id: product.id,
+                                      count: productCount - 1,
+                                  })
                         }
                         onIncrement={() =>
-                            changeProductQuantity(product.id, productCount + 1)
+                            dispatch({
+                                type: 'CHANGE_PRODUCT_QUANTITY',
+                                id: product.id,
+                                count: productCount + 1,
+                            })
                         }
                         minCount={0}
                     />
