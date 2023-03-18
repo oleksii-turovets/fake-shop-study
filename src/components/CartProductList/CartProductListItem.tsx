@@ -1,12 +1,10 @@
-import { Product } from "utils/productsArray"
+import { Product } from 'utils/productsArray'
 
 type Props = {
     product: Product
-    productCount: number,
-
+    productCount: number
 }
 const CartProductListItem = ({ product, productCount }: Props) => {
-
     return (
         <div>
             {product.title}: {productCount}
