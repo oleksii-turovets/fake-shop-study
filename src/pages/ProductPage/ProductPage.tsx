@@ -21,9 +21,6 @@ const ProductPage = ({
             <Typography variant="h4" component={'h1'}>
                 {product.title}
             </Typography>
-            <p
-                dangerouslySetInnerHTML={{ __html: product.fullDescription! }}
-            style={{color:'red',}}></p>
         </>
     )
 }
