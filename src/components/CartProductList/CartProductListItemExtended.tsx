@@ -6,6 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { toggleLike } from 'redux/likeReducer'
+import { changeProductQuantity, removeProductFromCart } from 'redux/cartReducer'
 
 type Props = {
     product: Product
@@ -13,7 +14,6 @@ type Props = {
 }
 
 const CartProductListItemExtended = ({ product, productCount }: Props) => {
-    
     const isLiked = useAppSelector((state) => state.productsLike[product.id])
     const dispatch = useAppDispatch()
 
@@ -37,22 +37,21 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                         count={productCount}
                         onDecrement={() =>
                             productCount === 1
-                                ? dispatch({
-                                      type: 'REMOVE_PRODUCT_FROM_CART',
-                                      id: product.id,
-                                  })
-                                : dispatch({
-                                      type: 'CHANGE_PRODUCT_QUANTITY',
-                                      id: product.id,
-                                      count: productCount - 1,
-                                  })
+                                ? dispatch(removeProductFromCart(product.id))
+                                : dispatch(
+                                      changeProductQuantity({
+                                          id: product.id,
+                                          count: productCount - 1,
+                                      })
+                                  )
                         }
                         onIncrement={() =>
-                            dispatch({
-                                type: 'CHANGE_PRODUCT_QUANTITY',
-                                id: product.id,
-                                count: productCount + 1,
-                            })
+                            dispatch(
+                                changeProductQuantity({
+                                    id: product.id,
+                                    count: productCount + 1,
+                                })
+                            )
                         }
                         minCount={0}
                     />
@@ -60,10 +59,7 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                     <Button
                         variant="outlined"
                         onClick={() =>
-                            dispatch({
-                                type: 'REMOVE_PRODUCT_FROM_CART',
-                                id: product.id,
-                            })
+                            dispatch(removeProductFromCart(product.id))
                         }
                     >
                         <DeleteIcon />

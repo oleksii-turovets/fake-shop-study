@@ -6,6 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { toggleLike } from 'redux/likeReducer'
+import { addProductToCart } from 'redux/cartReducer'
 
 type Props = {
     id: number
@@ -25,7 +26,6 @@ const ProductsListItem = ({
     price,
     image,
 }: Props) => {
-    
     const [count, setCount] = useState<number>(1)
 
     const onIncrement = () => {
@@ -65,11 +65,12 @@ const ProductsListItem = ({
                 <Button
                     variant="outlined"
                     onClick={() =>
-                        dispatch({
-                            type: 'ADD_PRODUCT_TO_CART',
-                            count,
-                            id,
-                        })
+                        dispatch(
+                            addProductToCart({
+                                id,
+                                count,
+                            })
+                        )
                     }
                 >
                     Add to cart
