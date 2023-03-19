@@ -7,6 +7,8 @@ import {
     Typography,
 } from '@mui/material'
 import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addReview } from 'redux/reviewsReducer'
 
 type Props = {}
 
@@ -16,18 +18,9 @@ type Review = {
 }
 
 const Reviews = (props: Props) => {
-    const arrReviews: Review[] = [
-        {
-            name: 'Христина',
-            text: 'Покупкою задоволена на всі 100!!!! Гарний дизайн, приємний колір, легкий, зручно поміщається в жіночій руці.',
-        },
-        {
-            name: 'Тарас',
-            text: 'Швидка доставка.Телефон Працює бездогано 10/10',
-        },
-    ]
+    const arrReviews = useAppSelector((state) => state.reviews)
+    const dispatch = useAppDispatch()
 
-    const [reviews, setReviews] = useState<Review[]>(arrReviews)
     const [newReview, setNewReview] = useState<Review>({
         name: '',
         text: '',
@@ -48,9 +41,7 @@ const Reviews = (props: Props) => {
     const sendReview = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        setReviews((prevState) => {
-            return [...prevState, newReview]
-        })
+        dispatch(addReview(newReview))
 
         setNewReview({
             name: '',
@@ -58,12 +49,14 @@ const Reviews = (props: Props) => {
         })
     }
 
+    
+
     return (
         <>
             <Typography component="h2" variant="h4" sx={{ margin: '40px 0' }}>
                 Reviews
             </Typography>
-            {reviews.map(({ name, text }, i) => (
+            {arrReviews.map(({ name, text }, i) => (
                 <Card variant="outlined" key={i} sx={{ margin: '30px 0' }}>
                     <CardContent>
                         <div>{name}:</div>
@@ -79,6 +72,7 @@ const Reviews = (props: Props) => {
                         label="Name"
                         value={newReview.name}
                         onChange={handleName}
+                        required
                     />
                 </div>
                 <br />
@@ -88,6 +82,7 @@ const Reviews = (props: Props) => {
                         placeholder="Your message"
                         value={newReview.text}
                         onChange={handleText}
+                        required
                     />
                 </div>
                 <Button variant="outlined" type="submit">
