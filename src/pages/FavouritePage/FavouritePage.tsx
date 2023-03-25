@@ -1,13 +1,10 @@
 import {
     Button,
     Card,
-    CardActions,
     CardContent,
     Grid,
-    Typography,
 } from '@mui/material'
 import productsArray, { getProductsObject, Product } from 'utils/productsArray'
-import FavouriteListItem from './FavouriteListItem'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
@@ -35,18 +32,6 @@ const FavouritePage = ({
         <>
             <Title>Favourites</Title>
             <Grid container spacing={4} alignItems="stretch">
-                {/* {productsArray
-                    .filter((item) => productsLike[item.id])
-                    .map(({ id, title, description, image }) => (
-                        <Grid item xs={12} sm={6} md={4} key={id}>
-                            <FavouriteListItem
-                                id={id}
-                                title={title}
-                                description={description}
-                                image={image}
-                            />
-                        </Grid>
-                    ))} */}
                 {Object.keys(filteredObject).map((id) => (
                     <Grid item xs={12} sm={6} md={4} key={id}>
                         <Card className="product" variant="outlined">
