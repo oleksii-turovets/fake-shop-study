@@ -5,6 +5,7 @@ import CartProductList from 'components/CartProductList/CartProductList'
 import CartProductListItemExtended from 'components/CartProductList/CartProductListItemExtended'
 import { useAppSelector } from 'redux/hooks'
 import Title from 'components/Title/Title'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
@@ -25,6 +26,8 @@ const CartPage = (props: Props) => {
             <div className="totals">
                 <CartTotal productsInCart={productsInCart} />
             </div>
+            <br />
+            <Link to='/checkout'>Proceed to checkout</Link>
         </div>
     )
 }
