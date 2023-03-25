@@ -4,6 +4,7 @@ import CartTotal from 'components/CartTotal/CartTotal'
 import CartProductList from 'components/CartProductList/CartProductList'
 import CartProductListItemExtended from 'components/CartProductList/CartProductListItemExtended'
 import { useAppSelector } from 'redux/hooks'
+import Title from 'components/Title/Title'
 
 type Props = {}
 
@@ -13,9 +14,7 @@ const CartPage = (props: Props) => {
 
     return (
         <div>
-            <Typography variant="h4" component="h1" align="center">
-                Cart
-            </Typography>
+            <Title>Cart</Title>
             <Grid container spacing={4} sx={{ marginTop: 0 }}>
                 <CartProductList
                     productsInCart={productsInCart}

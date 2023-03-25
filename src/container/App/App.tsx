@@ -10,6 +10,7 @@ import AboutPage from 'pages/AboutPage/AboutPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ProductPage from 'pages/ProductPage/ProductPage'
+import FavouritePage from 'pages/FavouritePage/FavouritePage'
 
 type Props = {}
 
@@ -30,6 +31,7 @@ const App = (props: Props) => {
                     <Route path="/payment" element={<PaymentPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/products/:id" element={<ProductPage />} />
+                    <Route path="/favourite" element={<FavouritePage/>} />
                 </Routes>
             </Container>
             <Footer />
