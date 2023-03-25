@@ -1,9 +1,4 @@
-import {
-    Button,
-    Card,
-    CardContent,
-    Grid,
-} from '@mui/material'
+import { Button, Card, CardContent, Grid } from '@mui/material'
 import productsArray, { getProductsObject, Product } from 'utils/productsArray'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
@@ -11,6 +6,7 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { toggleLike } from 'redux/likeReducer'
 import Title from 'components/Title/Title'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 type Props = {
     productsObject?: {
@@ -21,6 +17,8 @@ type Props = {
 const FavouritePage = ({
     productsObject = getProductsObject(productsArray),
 }: Props) => {
+    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
+
     const productsLike = useAppSelector((state) => state.productsLike)
     const dispatch = useAppDispatch()
 
@@ -65,6 +63,14 @@ const FavouritePage = ({
                     </Grid>
                 ))}
             </Grid>
+            <br />
+            <button onClick={() => setIsPopupOpen(true)}>Show popup</button>
+            {isPopupOpen && (
+                <div className="popup">
+                    <Title>Hello Popup</Title>
+                    <button onClick={() => setIsPopupOpen(false)}>Close</button>
+                </div>
+            )}
         </>
     )
 }
