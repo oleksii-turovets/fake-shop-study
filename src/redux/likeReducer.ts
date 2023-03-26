@@ -1,13 +1,10 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type ProductsLike = {
     [id: number]: boolean
 }
 
-export const initialState: ProductsLike = {
-    1: true,
-    2: true,
-}
+export const initialState: ProductsLike = {}
 
 export const likeSlice = createSlice({
     name: 'like',
